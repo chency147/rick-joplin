@@ -39,7 +39,9 @@ python3 -m unittest discover -s tests -p 'test_*.py' -v
 
 真实服务只读实测通过：Joplin Desktop 3.7.21、官方 MCP server 1.0.0、协议 `2025-06-18`。工具发现返回 11 个定义；`list_notebooks`、`list_tags`、`search_notes`、`read_note`、`semantic_search_notes`、`read_image` 六项均成功。图片在专用临时目录验证文件签名后清理，不记录私人笔记内容。当前补丁没有重新执行真实写入验收。
 
-GitHub Actions 已配置 Ubuntu 的 Python 3.9–3.14、macOS/Windows 的 Python 3.14；action 固定为官方提交 SHA，Dependabot 负责检查更新。这是待远程运行的 CI 配置，不代表 Linux/Windows 环境已实测通过。本机 Docker daemon 未启动，未执行容器测试。真实 HTTPS 端点尚未验收；证书验证由 Python 标准库提供。
+GitHub Actions 首次远程运行的 8 个任务全部通过：Ubuntu 的 Python 3.9–3.14 六项，以及 macOS/Windows 的 Python 3.14 各一项。验证源码提交为 `6844c0bf5d7ed3674c390ee96feef46ab7be8ece`，详见 [CI 运行记录](https://github.com/chency147/rick-joplin/actions/runs/37182150164)。每项任务运行完整模拟测试，不连接真实 Joplin。
+
+action 固定为官方提交 SHA，Dependabot 负责检查更新。本机 Docker daemon 未启动，未执行本地容器测试；Linux/Windows 的验证来自上述 GitHub 托管 runner。真实 HTTPS 端点尚未验收；证书验证由 Python 标准库提供。
 
 ## 历史版本：1.0.1
 
